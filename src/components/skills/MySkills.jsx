@@ -74,23 +74,24 @@ function MySkills(props) {
     };
 
     return (
-        <Box sx={{ mb: 2, minHeight: "10vh" }}>
-            <Typography sx={{ fontSize: { xs: 40, md: 75 }, mb: 2, color: "text.tertiary" }} >
-                MY SKILLS
-            </Typography>
-            <Grid container spacing={2} sx={{}}>
-                <Grid item xs={12} sm={12} md={4}>
-                    <RadarChart data={dataForTechnicalSkills} />
+        <>
+            <Box sx={{ mb: 2, minHeight: "10vh" }}>
+                <Typography sx={{ fontSize: { xs: 40, md: 75 }, mb: 2, color: "text.tertiary" }} >
+                    MY SKILLS
+                </Typography>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={12} md={4}>
+                        <RadarChart data={dataForTechnicalSkills} />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                        <RadarChart data={dataForSoftSkills} />
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={4}>
+                        <RadarChart data={dataForManagerialSkills} />
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={12} md={4}>
-                    <RadarChart data={dataForSoftSkills} />
-                </Grid>
-                <Grid item xs={12} sm={12} md={4}>
-                    <RadarChart data={dataForManagerialSkills} />
-                </Grid>
-            </Grid>
-
-        </Box>
+            </Box>
+        </>
     );
 }
 

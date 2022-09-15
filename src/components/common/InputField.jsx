@@ -6,14 +6,6 @@ import { Paper, Box, Container, Typography } from '@mui/material';
 
 function InputField(props) {
     return (
-        // <Box
-        //     component="form"
-        //     sx={{
-        //         '& .MuiTextField-root': { m: 1, width: '25ch' },
-        //     }}
-        //     noValidate
-        //     autoComplete="off"
-        // >
         <TextField
             id="outlined-text-input"
             label={props.label}
@@ -29,7 +21,6 @@ function InputField(props) {
                     "& > fieldset": {
                         borderColor: "text.tertiary",
                         color: "blue"
-                        // textAreaStyle:{color:"text.tertiary"},
                     }
                 },
                 " & .MuiOutlinedInput-input": {
@@ -38,11 +29,11 @@ function InputField(props) {
 
             }}
             multiline={props.multiline}
-            rows={props.multiline ? 4 : false}
-
+            rows={props.multiline ? 4 : undefined}
+            value={props.value}
+            onChange={props.onChange}
 
         />
-        // </Box>
 
     )
 }

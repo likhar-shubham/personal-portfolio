@@ -8,6 +8,7 @@ import AboutPage from './components/about/AboutPage';
 import Contact from './components/contact/Contact';
 import { Container } from '@mui/material';
 import MySkills from './components/skills/MySkills';
+import { Routes, Route } from 'react-router-dom';
 
 const theme = createTheme({
   typography: {
@@ -17,7 +18,7 @@ const theme = createTheme({
   },
   palette: {
     background: {
-      paper: '#2C3333', //'#1B262C',
+      paper: '#2C3333',
     },
     primary: {
       main: '#395B64',
@@ -26,9 +27,9 @@ const theme = createTheme({
       main: '#A5C9CA',
     },
     text: {
-      primary: '#395B64', //'#0F4C75',
-      secondary: '#A5C9CA',//#3282B8',
-      tertiary: '#E7F6F2'//#BBE1FA'
+      primary: '#395B64',
+      secondary: '#A5C9CA',
+      tertiary: '#E7F6F2'
     }
   }
 });
@@ -39,17 +40,18 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Container maxWidth="xl">
-
           <Header />
-          <Content />
+          <Routes>
+            <Route path="/" element={<Content />} />
+            <Route path="/ABOUT" element={<AboutPage />} />
+            <Route path="/SKILLS" element={<MySkills />} />
+            <Route path="/CONTACT" element={<Contact />} />
+          </Routes>
           <ContactSpeedDial />
-          <AboutPage />
-          <MySkills />
-          <Contact />
-
         </Container>
 
-      </ThemeProvider></div>
+      </ThemeProvider>
+    </div>
   );
 }
 

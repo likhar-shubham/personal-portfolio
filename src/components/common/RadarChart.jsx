@@ -32,7 +32,6 @@ function RadarChart(props) {
                 max: 100,
                 ticks: {
                     display: false,
-                    maxTicksLimit: 1
                 }
 
             }

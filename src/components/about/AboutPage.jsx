@@ -77,7 +77,7 @@ function AboutPage(props) {
                                     </ListItemIcon>
                                     <ListItemText>
                                         <Typography sx={{ fontSize: 25 }} color="text.tertiary" gutterBottom>
-                                            I love to create anything which is meaningful, be it SPA,code, corporate relations or friendships.
+                                            I love to create anything which is meaningful, be it SPA, code, corporate relations or friendships.
                                         </Typography>
                                     </ListItemText>
                                 </ListItem>

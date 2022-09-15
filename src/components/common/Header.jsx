@@ -13,21 +13,13 @@ import MenuItem from '@mui/material/MenuItem';
 import SelfImprovementIcon from '@mui/icons-material/SelfImprovement';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Slide from '@mui/material/Slide';
+import { Link } from 'react-router-dom';
 
 
-// interface Props {
-//     children:React.ReactElement
-// }
-
-const pages = ['HOME', 'ABOUT', 'PROJECTS', 'CONTACT'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['HOME', 'ABOUT', 'SKILLS', 'PROJECTS', 'CONTACT'];
 
 function HideOnScroll(props) {
     const { children } = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
-    // target: window ? window() : undefined,
     const trigger = useScrollTrigger();
 
     return (
@@ -60,117 +52,87 @@ function Header(props) {
 
     return (
         <>
-        <HideOnScroll {...props}>
-            <AppBar elevation={0} sx={{ bgcolor: 'background.paper', minHeight: '75px' }} >
-                <Container maxWidth="xl">
-                    <Toolbar disableGutters>
-                        <SelfImprovementIcon sx={{ display: { xs: 'none', md: 'flex' } }} />
-                        {/* <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        LOGO
-                    </Typography> */}
-
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, color: 'text.tertiary' }}>
-                            <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleOpenNavMenu}
-                                color="inherit"
-                            >
-                                <MenuIcon />
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorElNav}
-                                anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'left',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'left',
-                                }}
-                                open={Boolean(anchorElNav)}
-                                onClose={handleCloseNavMenu}
-                                sx={{
-                                    color: "text.tertiary",
-                                    display: { xs: 'block', md: 'none', },
-
-                                }}
-                            >
-                                {pages.map((page) => (
-                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                        <Typography sx={{
-                                            color: "text.tertiary",
-                                        }} textAlign="center">{page}</Typography>
-                                    </MenuItem>
-                                ))}
-                            </Menu>
-                        </Box>
-                        <SelfImprovementIcon sx={{ display: { xs: 'flex', md: 'none' }, justifyItems: "center" }} />
-
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, alignItems: "center", justifyContent: "center" }}>
-                            {pages.map((page) => (
-                                <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                    // variant='outlined'
-                                    sx={{ mx: 1, mt: 2, color: 'text.tertiary', display: 'flex', fontSize: 30 }}
+            <HideOnScroll {...props}>
+                <AppBar elevation={0} sx={{ position: "sticky", bgcolor: 'background.paper', minHeight: '75px' }} >
+                    <Container maxWidth="xl">
+                        <Toolbar disableGutters>
+                            <SelfImprovementIcon sx={{ display: { xs: 'none', md: 'flex' } }} />
+                            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, color: 'text.tertiary' }}>
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleOpenNavMenu}
+                                    color="inherit"
                                 >
-                                    {page}
-                                </Button>
-                            ))}
-                        </Box>
+                                    <MenuIcon />
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorElNav}
+                                    anchorOrigin={{
+                                        vertical: 'bottom',
+                                        horizontal: 'left',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'left',
+                                    }}
+                                    open={Boolean(anchorElNav)}
+                                    onClose={handleCloseNavMenu}
+                                    sx={{
+                                        color: "text.tertiary",
+                                        display: { xs: 'block', md: 'none', },
 
-                        {/* <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: '45px' }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box> */}
-                    </Toolbar>
-                </Container>
-            </AppBar>
-        </HideOnScroll>
+                                    }}
+                                >
+                                    {pages.map((page) => (
+                                        <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                            <Link
+                                                style={{ textDecoration: "none" }}
+                                                to={page === 'HOME' ? `/` : `/${page}`}
+                                            >
+                                                <Typography sx={{
+                                                    color: "text.tertiary",
+                                                }} textAlign="center">
+                                                    {page}
+                                                </Typography>
+                                            </Link>
+                                        </MenuItem>
+                                    ))}
+                                </Menu>
+                            </Box>
+                            <SelfImprovementIcon sx={{ display: { xs: 'flex', md: 'none' }, justifyItems: "center" }} />
+
+                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, alignItems: "center", justifyContent: "center" }}>
+                                {pages.map((page) => (
+                                    <Button
+                                        key={page}
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ mx: 1, mt: 2, color: 'text.tertiary', display: 'flex' }}
+                                    >
+
+                                        <Link
+                                            style={{ textDecoration: "none" }}
+
+                                            to={page === 'HOME' ? `/` : `/${page}`}
+                                        >
+                                            <Typography sx={{
+                                                color: "text.tertiary",
+                                                fontSize: 30
+                                            }} textAlign="center">
+                                                {page}
+                                            </Typography>
+                                        </Link>
+                                    </Button>
+                                ))}
+                            </Box>
+                        </Toolbar>
+                    </Container>
+                </AppBar>
+            </HideOnScroll>
         </>
     );
 }
